@@ -1,0 +1,337 @@
+#yo{
+    color: aqua;
+}
+
+#reco{
+    text-decoration: none;
+    color: #292421;
+}
+
+#reco:hover{
+    color: #1874cd;
+}
+
+#roco:hover{
+    background-color: white;
+}
+
+#new-id-nav{
+
+}
+
+#idk1{
+//border-bottom: 1px black solid;
+    width: 100%;
+}
+#idk2{
+    float: right;
+    margin-top: 30px;
+    font-size: 130%;
+    padding: 5px 20px;
+    margin-right: 15px;
+    border: 1px solid #1874CD;
+    border-radius: 10%;
+}
+
+#idk2:hover{
+    cursor: pointer;
+    color: #1874CD;
+}
+
+#idk3, #userNameidk{
+    float: right;
+    border-radius: 10%;
+    border: 1px solid #1874cd;
+    margin-top: 30px;
+    padding: 5px 20px;
+    font-size: 130%;
+}
+
+#idk3:hover, #userNameidk{
+    cursor: pointer;
+    color: #1874cd;
+}
+
+#logout{
+    position: absolute;
+    padding: 10px;
+    border: 1px solid #1874cd;
+    border-radius: 30%;
+}
+
+#signup_id, #login_id{
+    text-decoration: none;
+    color: black;
+}
+
+#signup_id:hover, #login_id:hover {
+    background-color: white;
+    color: #2980B9;
+}
+
+#main_title{
+    margin-top: 30px;
+    margin-left: 2%;
+    font-size: 150%;
+}
+
+
+.hr_id{
+    border-bottom: 1px groove #1874cd;
+}
+
+#main_content{
+    margin-top: 50px;
+}
+
+.box_content{
+
+}
+.box_content:hover{
+    cursor: pointer;
+    color: #1874CD;
+}
+.footer{
+    background-color: #EEEEEE;
+    margin-top: 5%;
+    padding: 0;
+    width: 97%;
+    color: black;
+    text-align: center;
+    position: relative;
+    bottom: 0px;
+    border: groove #1874cd 1px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.button_id{
+    background-color: white;
+    border: none;
+    font-size: 25px;
+}
+.button_id1{
+    background-color: white;
+    border: none;
+    padding-left: 20px;
+    font-size: 40px;
+}
+
+#Music_div_id{
+    text-align: center;
+    margin-top: 40px;
+}
+
+#Music_div_id_2, #Movies_div_id_2, #Artical_div_id_2, #Food_div_id_2{
+    display: none;
+    background-color: #F2F2F2;
+    width: 95%;
+    margin: auto;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px gray;
+}
+
+#Music_div_id_1, #Movies_div_id_1, #Artical_div_id_1, #Food_div_id_1 {
+    display: none;
+}
+
+#button_music{
+
+    text-align: center;
+}
+
+.span1_id{
+    font-size: 35px;
+    padding: 15px;
+}
+
+.input_song_name{
+    width: 70%;
+    border: 0px gray groove;
+    margin-top: 40px;
+    height: 50px;
+    border-radius: 10px;
+    font-size: larger;
+    padding-left: 20px;
+}
+
+.p_class{
+    font-size: 25px;
+    padding-right: 20px;
+}
+
+.button_submit_music{
+    width: 25%;
+    height: 45px;
+    text-decoration: none;
+    background-color: #F8F9F9;
+    border: 1px #286090 solid;
+    color: #292421;
+    font-size: larger;
+    color: #1874CD;
+    border-radius: 7px;
+    box-shadow: 0px 0px 3px gray;
+}
+
+.button_submit_music:hover{
+    background-color: #286090;
+    color: #F8F9F9;
+    -webkit-transition: all 700ms ease;
+}
+
+#signup_id_div{
+    display: none;
+    position: absolute;
+    left: 29%;
+    right: 29%;
+    background-color: #EEEEEE;
+    z-index: 9999;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px #888888;
+    top: 10%;
+}
+
+#login_id_div{
+    display: none;
+    position: absolute;
+    left: 29%;
+    right: 29%;
+    background-color: #EEEEEE;
+    z-index: 9999;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px #888888;
+    top: 19%;
+}
+
+.user_name{
+
+    padding-top: 10px;
+}
+
+.input_signup_name_id, .input_login_name_id{
+    width: 90%;
+    border: 1px gray groove;
+    height: 30px;
+    border-radius: 4px;
+    font-size: small;
+    padding-left: 5px;
+    margin-left: 10px;
+}
+
+
+#input_validation5, #input_validation15{
+    margin-bottom: 20px;
+}
+
+.button_submit_Signup_id{
+    width: 20%;
+    height: 45px;
+    text-decoration: none;
+    background-color: #F8F9F9;
+    border: 1px #286090 solid;
+    color: #292421;
+    font-size: larger;
+    color: #1874CD;
+    border-radius: 3px;
+    margin-top: 30px;
+    box-shadow: 0px 0px 5px #888888;
+}
+
+.button_submit_Signup_id:hover{
+    background-color: #286090;
+    color: #F8F9F9;
+    -webkit-transition: all 700ms ease;
+}
+
+#close_button{
+    margin-left: 94%;
+    margin-top: 1%;
+    border: 0px solid white;
+    border-radius: 5px;
+}
+
+#close_button:hover{
+    box-shadow: 0px 0px 10px #888888;
+}
+
+#close_button_login{
+    margin-left: 94%;
+    margin-top: 1%;
+    border: 0px solid white;
+    border-radius: 5px;
+}
+
+#close_button_login:hover{
+    box-shadow: 0px 0px 10px #888888;
+}
+
+#Movies_div_id_3, #Music_div_id_3, #Artical_div_id_3, #Food_div_id_3{
+    font-size: larger;
+    display: none;
+    width: 75%;
+    text-align: center;
+    margin: 0 auto;
+    background-color: #EEEEEE;
+    padding-bottom: 20px;
+    border-radius: 7px;
+    box-shadow: 0px 0px 20px #286090;
+}
+
+#ui-id-1{
+
+}
+
+#dhruv{
+    text-decoration: none;
+    color: black;
+}
+
+#username{
+    color: #1874cd;
+    font-weight: bold;
+    margin-top: 40px;
+}
+
+#heart{
+    color: red;
+}
+
+#dataTopLink{
+    display: none;
+}
+
+.dataTop a:hover, a:visited, a:link, a:active
+{
+    text-decoration: none;
+    color: #1874cd;
+}
+
+.dataTop a {
+    text-decoration: none;
+    color: #B71C1C;
+}
+
+#as{
+    color: #B71C1C;
+    font-size: large;
+    cursor: default;
+}
+
+.card_self{
+    font-size: 10px;
+}
+
+.custombydhruv{
+    margin-left: 50px;
+    padding: 20px;
+}
+
+.custombydhruv2{
+    width: 30%;
+    box-shadow: 0px 0px 10px -1px grey;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 3px;
+    height: 380px;
+}
+

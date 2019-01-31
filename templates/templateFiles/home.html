@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Recommendation System</title>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'C:\Users\Yash\PycharmProjects\rs3\static\personal\mystyle.css'%}" type="text/css" />
+    <link rel="shortcut icon" href="{%  static 'C:\Users\Yash\PycharmProjects\rs3\static\personal\fevicon.png' %}">
+</head>
+<body>
+
+<div id="body_id">
+    <nav class="navbar navbar-custom" role="navigation"  id="new-id-nav">
+        <div class="navbar-header">
+            <button id="clicked" type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <i class="fa fa-bars" aria-hidden="true" style="font-size:240%"></i>
+            </button>
+        </div>
+
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-center" id="idk1">
+                <li id="main_title" ><a onmouseover="recoFun()" id="reco" href="{% url 'index' %}">Recommendation System</a></li>
+                <div id="for_break"></div>
+                {% if username == 'nope'%}
+
+                    <li id="idk3" onclick="clickOnSignUp()">SignUp</li>
+                    <li id="idk2" onclick="clickOnLogin()">Login</li>
+
+                {% else %}
+                    <li id="userNameidk" style="border: 1px solid #1874cd">
+                        <span id="username">{{ username }}</span>
+                        <div id="logout" style="display: none">
+                            <a href="{% url 'logout' %}">logout</a>
+                        </div>
+                    </li>
+                {% endif %}
+                <div style="clear: both"></div>
+            </ul>
+        </div>
+    </nav>
+
+</div>
+<div class="container-fluid" id="signup_id_div">
+    <br>
+    <button onclick="closeSignup()" id="close_button"><i class="fa fa-times" aria-hidden="true"></i></button>
+
+    <form method="post" onsubmit="return myFunction()" action="{% url 'authentication' %}">{% csrf_token %}
+
+        <h4 for="fname1" class="user_name">User Name: </h4>
+        <input autofocus id="input_validation1" size="10" required class="input_signup_name_id" type="text" placeholder="Enter User Name" name="fname1" pattern=".{8,15}"   required title="8 to 15 characters" ><span id="as" title="required">*</span>
+        <h4 for="fname2" class="user_name">Email ID: </h4>
+        <input required id="input_validation2" autocomplete="on" size="40" class="input_signup_name_id" type="email" placeholder="Enter Email Id" name="fname2"><span id="as" title="required">*</span>
+        <h4 for="password" class="user_name">Password: </h4>
+
+        <input placeholder="Enter Password" class="input_signup_name_id" type="password" name="password" id="input_validation3" data-rule-email="true"  pattern=".{8,15}" required title="8 to 15 length of password"><span id="as" title="required">*</span>
+        <h4 for="email" class="user_name">Confirm Password: </h4>
+
+        <input placeholder="Enter Password Again" class="input_signup_name_id" type="password" name="email" id="input_validation4" data-rule-equalTo="#input_validation3" pattern=".{8,15}" required title="8 to 15 length of password"><span id="as" title="required">*</span>
+        <center><input id="input_validation5" class="button_submit_Signup_id" type="submit" value="signup"></center>
+
+    </form>
+</div>
+
+<div class="container-fluid" id="login_id_div">
+    <br>
+    <button onclick="closeLogin()" id="close_button_login"><i class="fa fa-times" aria-hidden="true"></i></button>
+    <form method="post" onsubmit="return myFunction()" action="{% url 'login' %}">{% csrf_token %}
+        <h4 for="fname5" class="user_name">User Name: </h4>
+        <input  id="input_validation6" class="input_login_name_id" type="text" placeholder="Enter User Name" name="fname5" required title=""><span id="as" title="required">*</span>
+        <h4 for="fname6" class="user_name">Password: </h4>
+        <input id="input_validation7" class="input_login_name_id" type="password" placeholder="Enter Password" name="fname6" required title=""><span id="as" title="required">*</span>
+        <center><input id="input_validation15" class="button_submit_Signup_id" type="submit" value="login"></center>
+
+    </form>
+</div>
+
+<div id="body_id_2" onclick="closeSignup(), closeLogin()">
+
+
+
+    <hr class="hr_id">
+
+    {%if Again == 'true'%}
+        <div style="text-align: center" class="alert alert-danger alert-dismissible">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>Sorry!</strong>, {{ statement }}
+        </div>
+    {% endif %}
+
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <h3 align="center">What do you want to Recommend?</h3>
+            </div>
+        </div>
+    </div>
+
+
+    <hr class="hr_id">
+    <br>
+    <div class="container-fluid" id="main_content">
+        <div class="row">
+            <a style="color: black" href="#Movies_div_id_2"><div class="col-sm-4 box_content" id="Movie_header" onclick="Movies_div()">
+
+                <hr>
+                <br>
+                <h2 align="center">Movies</h2>
+                <br>
+                <hr>
+            </div>
+            </a>
+            <a style="color: black" href="#Music_div_id_2"><div class="col-sm-4 box_content" id="Music_header" onclick="music_div()">
+                <hr>
+                <br>
+                <h2 align="center">Music</h2>
+                <br>
+                <hr>
+            </div>
+            </a>
+
+
+            <a style="color: black" href="#Artical_div_id_2"><div class="col-sm-4 box_content" id="Ariticle_header" onclick="Artical_div()">
+
+                <hr>
+                <br>
+                <h2 align="center">Books</h2>
+                <br>
+                <hr>
+            </div>
+            </a>
+
+            <!--<a style="color: black" href="#Food_div_id_1">
+                <div class="col-sm-6 box_content" id="Food_header" onclick="Food_div()">
+                    <hr>
+                    <br>
+                    <h2 align="center">Food</h2>
+                    <br>
+                    <hr>
+                </div>
+            </a>
+            -->
+        </div>
+    </div>
+
+    <div class="container-fluid" id="Music_div_id">
+        <div class="row" id="Music_div_id_1">
+            <div class="col-sm-12">
+                <h3 align="center">Recommendation By: </h3>
+                <div id="button_music">
+                    <br>
+                    <span class="span1_id">||</span>
+                    <button onclick="funForSongByName(), counter()" class="button_id" id="button_id_1">Song name </button><span class="span1_id">||</span>
+                    <button onclick="funForSongByAlbum(), counter()" class="button_id" id="button_id_2">Album name </button><span class="span1_id">||</span>
+                    <button onclick="funForSongByArtist(), counter()" class="button_id" id="button_id_3">Artist name</button><span class="span1_id">||</span>
+                </div>
+                <h3>selected : <span id="counter_id">none</span> <button onclick="hide()" class="button_id1"><i class="fa fa-check" aria-hidden="true"></i></button></h3>
+            </div>
+        </div>
+        <div class="row" id="Music_div_id_2">
+            <div class="col-sm-12">
+                <br>
+                <h3>Recommendation for Music!!</h3>
+                <form method="get" action="{% url 'music' %}">
+                    <div id="input_Movies_Title_Id"><p><span class="p_class">Title Name:</span><input id="music_id_my" class="input_song_name" type="text" placeholder="  Enter Name of Artist..." name="ArtistName" required></p></div>
+                    <br>
+                    <br>
+                    <input class="button_submit_music" type="submit" value="submit">
+                    <br>
+                    <br>
+                </form>
+                    <br>
+                    <br>
+            </div>
+        </div>
+
+        <div class="row" id="Music_div_id_3">
+            <h3 align="center">Eminem - Rap God </h3>
+            <hr>
+            <div class="col-sm-2"></div>
+            <div class="col-sm-4" align="left">
+                <ul>
+                    <li>Eminem - Without Me</li>
+                    <li>Eminem - Mockingbird</li>
+                    <li>Eminem - No Love</li>
+                    <li>Eminem - Guts over Fear</li>
+                </ul>
+            </div>
+            <div class="col-sm-4" align="left">
+                <ul typeof="squre">
+                    <li>Eminem - Love the way you lie</li>
+                    <li>Eminem - Love the Way you Lie</li>
+                    <li>Eminem - Headlights</li>
+                </ul>
+            </div>
+            <div class="col-sm-2"></div>
+        </div>
+
+        <div class="row" id="Movies_div_id_1">
+            <div class="col-sm-12">
+                <h3 align="center">Recommendation By: </h3>
+                <div id="button_Movies">
+                    <br>
+                    <span class="span1_id">||</span>
+
+                    <button onclick="funForMoviesByGenre(), counter_Movies()" class="button_id" id="button_id_1_Movies">Genre name </button><span class="span1_id">||</span>
+                    <button onclick="funForMoviesByTitle(), counter_Movies()" class="button_id" id="button_id_2_Movies">Title name </button><span class="span1_id">||</span>
+                </div>
+                <h3>selected : <span id="counter_id_Movies">none</span> <button onclick="hide1()" class="button_id1"><i class="fa fa-check" aria-hidden="true"></i></button></h3>
+            </div>
+        </div>
+
+
+        <div class="row" id="Movies_div_id_2">
+            <div class="col-sm-12">
+                <br>
+                <h3>Recommendation for Movies!!</h3>
+                <form method="get" onsubmit="return myFunction()" action="{% url 'show' %}">
+
+                    <div id="input_Movies_Genre_Id"><p><span class="p_class">Genre Name:</span><input class="input_song_name" type="text" placeholder="  Enter Name of Gener..." name="fname10"></p></div>
+                    <div id="input_Movies_Title_Id"><p><span class="p_class">Title Name:</span><input id="tags" class="input_song_name" type="text" placeholder="  Enter Name of Movie..." name="fname11" required></p></div>
+                    <br>
+                    <br>
+                    <input class="button_submit_music" type="submit" value="submit">
+                    <br>
+                    <br>
+                </form>
+            </div>
+        </div>
+
+        <div class="row" id="Movies_div_id_3">
+            <h3 align="center">Infinity War</h3>
+            <hr>
+            <div class="col-sm-2"></div>
+            <div class="col-sm-4" align="left">
+                <ul>
+                    <li>Justice Leage</li>
+                    <li>Iron Man</li>
+                    <li>Captain America</li>
+                    <li>Thor</li>
+                </ul>
+            </div>
+            <div class="col-sm-4" align="left">
+                <ul typeof="squre">
+                    <li>Civil War</li>
+                </ul>
+            </div>
+            <div class="col-sm-2"></div>
+        </div>
+
+        <div class="row" id="Artical_div_id_1">
+            <div class="col-sm-12">
+                <h3 align="center">Recommendation By: </h3>
+                <div id="button_Artical">
+                    <br>
+                    <span class="span1_id">||</span><button onclick="funForArticalByTag(), counter_Artical()" class="button_id" id="button_id_1_Artical">Tag name </button><span class="span1_id">||</span>
+                </div>
+                <h3>selected : <span id="counter_id_Artical">none</span> <button onclick="hide2()" class="button_id1"><i class="fa fa-check" aria-hidden="true"></i></button></h3>
+            </div>
+        </div>
+
+        <div class="row" id="Artical_div_id_2">
+            <div class="col-sm-12">
+                <form method="get" onsubmit="return myFunction()" action="{% url 'book' %}">
+                    <br>
+                    <h3>Recommendation for Artical!!</h3>
+                    <div id="input_Artical_Tag_Id"><p><span class="p_class">Tag Name:</span><input id="tags2" class="input_song_name" type="text" placeholder="  Enter Name of Book..." name="bookname"></p></div>
+                    <br>
+                    <br>
+                    <input class="button_submit_music" type="submit" value="submit">
+                    <br>
+                    <br>
+                </form>
+            </div>
+        </div>
+
+        <div class="row" id="Artical_div_id_3">
+            <h3 align="center">GST</h3>
+            <hr>
+            <div class="col-sm-2"></div>
+            <div class="col-sm-4" align="left">
+                <ul>
+                    <li>Demonetization</li>
+                    <li>8 November</li>
+                    <li>Narendra Modi</li>
+                    <li>RBI</li>
+                </ul>
+            </div>
+            <div class="col-sm-4" align="left">
+                <ul typeof="squre">
+                    <li>C -GST</li>
+                    <li>S -GST</li>
+                </ul>
+            </div>
+            <div class="col-sm-2"></div>
+        </div>
+
+        <div class="row" id="Food_div_id_1">
+            <div class="col-sm-12">
+                <h3 align="center">Recommendation By: </h3>
+                <div id="button_Food">
+                    <br>
+                    <span class="span1_id">||</span><button onclick="funForFoodByIngredients(), counter_Food()" class="button_id" id="button_id_1_Food">Ingredients name </button><span class="span1_id">||</span>
+                </div>
+                <h3>selected : <span id="counter_id_Food">none</span> <button onclick="hide3()" class="button_id1"><i class="fa fa-check" aria-hidden="true"></i></button></h3>
+            </div>
+        </div>
+
+        <div class="row" id="Food_div_id_2">
+            <div class="col-sm-12">
+                    <br>
+                    <h3>Recommendation for Food!!</h3>
+                    <div id="input_Food_Ingredients_Id"><p><span class="p_class">Ingredients Name:</span><input class="input_song_name" type="text" placeholder="  Enter Name of Ingredients..." name="fname"></p></div>
+                    <br>
+                    <br>
+                    <input onclick="Food_div_3()" class="button_submit_music" type="submit" value="submit">
+                    <br>
+                    <br>
+            </div>
+        </div>
+
+        <div class="row" id="Food_div_id_3">
+            <h3 align="center">Cheese</h3>
+            <hr>
+            <div class="col-sm-2"></div>
+            <div class="col-sm-4" align="left">
+                <ul>
+                    <li>Cheese Dosa</li>
+                    <li>Pizza</li>
+                    <li>Macroni</li>
+                    <li>Pasta</li>
+                </ul>
+            </div>
+            <div class="col-sm-4" align="left">
+                <ul typeof="squre">
+                    <li>Margerata</li>
+                </ul>
+            </div>
+            <div class="col-sm-2"></div>
+        </div>
+
+    </div>
+
+
+    <div class="container-fluid footer">
+        <div class="row">
+            <div class="col-sm-12">
+                <br>
+                <p>Recommendation System</p>
+                <p>Made with <i id="heart" class="far fa-heart"></i> by,<br> <a id="dhruv" href = "https://dhruvthakkar.000webhostapp.com/"> Dhruv Thakkar </a>| Priyank Jain | Hardik Bhokare | Keval Shah  </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+{% load staticfiles %}
+<script src="{% static 'C:\Users\Yash\PycharmProjects\rs3\static\personal\graph.js'%}"></script>
+<script src="{% static 'C:\Users\Yash\PycharmProjects\rs3\static\personal\graph2.js'%}"></script>
+<script src="{% static 'C:\Users\Yash\PycharmProjects\rs3\static\personal\ab.js'%}"></script>
+
+<script type="text/javascript">
+</script>
+
+<script type="text/javascript">
+
+    function logout() {
+        $("#logout").css("display", "block");
+    }
+
+    function logoutLeave() {
+        $("#logout").css("display", "none");
+    }
+
+    $("#userNameidk").mouseover(logout);
+    $("#userNameidk").mouseout(logoutLeave);
+
+
+</script>
+
+</body>
+</html>

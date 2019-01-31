@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+    {% load staticfiles %}
+    <link rel="shortcut icon" href="{%  static 'C:\Users\Yash\PycharmProjects\rs3\static\personal\fevicon.png' %}">
+</head>
+<body>
+
+<div id="admin-auth">
+    <p>Are you Admin?</p>
+    <input id="admin_password" type="password">
+    <button type="button" onclick="admin()" class="btn btn-default">check</button>
+</div>
+
+<div id="admin-detail-negative" style="display: none">
+    <div style="text-align: center" class="alert alert-danger alert-dismissible">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Sorry!</strong>, you enter wrong!
+    </div>
+</div>
+<div id="admin-detail" style="display: none">
+    {% for get in userDetails %}
+        <table style="text-align: center;">
+            <tr>
+                <td style="padding: 20px" >
+                    UserName
+                </td>
+                <td>
+                    Password
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    {{ get.user }}
+                </th>
+                <th>
+                    {{ get.password }}
+                </th>
+            </tr>
+        </table>
+    {% endfor %}
+</div>
+
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script>
+    function admin() {
+        var a = $('#admin_password').val();
+        if (a == 'DhruvFromLj'){
+            $('#admin-detail').css('display', 'block');
+            $('#admin-detail-negative').css('display', 'none');
+        }
+        else {
+            $('#admin-detail').css('display', 'none');
+            $('#admin-detail-negative').css('display', 'block');
+        }
+    }
+</script>
+
+</body>
+</html>
+
